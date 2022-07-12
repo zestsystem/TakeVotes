@@ -17,7 +17,8 @@
     // Theo's Additional Opinions
     "incremental": false,
     "noUncheckedIndexedAccess": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "strictNullChecks": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
