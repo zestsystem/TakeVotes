@@ -6,7 +6,17 @@ export const questionRouter = trpc
   .router()
   .query('get-all', {
     async resolve() {
-      return await prisma?.pollQuestion.findMany();
+      return await prisma.pollQuestion.findMany();
+    },
+  })
+  .query('get-by-id', {
+    input: z.object({ id: z.string() }),
+    async resolve({ input }) {
+      return await prisma.pollQuestion.findFirst({
+        where: {
+          id: input.id,
+        },
+      });
     },
   })
   .mutation('create', {
@@ -18,6 +28,7 @@ export const questionRouter = trpc
       return await prisma.pollQuestion.create({
         data: {
           question: input.question,
+          options: [],
         },
       });
     },
